@@ -1,0 +1,65 @@
+server:
+  #服务端口
+  port: 8088
+  #servlet容器名称
+  servlet:
+    context-path: /demo
+
+spring:
+  #配置双数据源
+  datasource:
+    #内部使用
+    primary:
+      #驱动
+      driver-class-name: org.postgresql.Driver
+      #url
+      jdbc-url: jdbc:postgresql://127.0.0.1:5432/primary?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+      #账号
+      username: postgres
+      #密码
+      password: 123456
+    #外部使用
+    secondary:
+      #驱动
+      driver-class-name: org.postgresql.Driver
+      #url
+      jdbc-url: jdbc:postgresql://127.0.0.1:5432/secondary?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+      #账号
+      username: postgres
+      #密码
+      password: 123456
+  #JPA配置
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    generate-ddl: true
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  #允许类名重复
+  main:
+    allow-bean-definition-overriding: true
+  #minion服务器
+  minio:
+    endpoint: http://127.0.0.1:9000
+    access_key: 3S81G1DD6FDU10XKHBRI
+    secret_key: wbGzOzMkk9TAJVQjH+mKG0hiMpmwJg5UUmc+9k+P
+  #配置上传文件的大小限制
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
+  #配置静态资源访问路径
+  resources:
+    static-locations: classpath:/static/
+  #reids
+  redis:
+    host: 127.0.0.1
+    port: 6379

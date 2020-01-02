@@ -1,0 +1,1 @@
+INSERT INTO tb_user (id, "name", pwd, tel, email, create_time, update_time) VALUES(9962, 'jerry', '$2a$10$TkvMr0dp.guwF24dWx17C.UH85AoxhJkCGRo582sl5U0XtDuE6Nzu', '18390220023', 'test123@126.com', '2019-12-28 15:18:43.761', '2019-12-28 15:18:43.761');
